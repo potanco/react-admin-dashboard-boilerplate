@@ -10,7 +10,7 @@ const Login = () => {
 
   return (
     <Row style={{ height: "100vh" }}>
-      <Col xs={20} md={10} lg={7} className="center">
+      <Col xs={20} md={10} lg={6} className="center">
         <Form
           name="normal_login"
           className="login-form"
@@ -57,6 +57,9 @@ const Login = () => {
               Forgot password
             </a>
           </Form.Item> */}
+          <a className="login-form-forgot" href="">
+            Forgot password
+          </a>
 
           <Form.Item>
             <Button

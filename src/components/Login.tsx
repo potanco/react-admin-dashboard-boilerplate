@@ -1,15 +1,15 @@
-import { Form, Input, Button, Checkbox, Layout, Row, Col } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Row, Col } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-const { Content }: any = Layout;
+// const { Content }: any = Layout;
 
 const Login = () => {
   const onFinish = (values: any) => {
-    console.log("Received values of form: ", values);
+    console.log('Received values of form: ', values);
   };
 
   return (
-    <Row style={{ height: "100vh" }}>
+    <Row style={{ height: '100vh' }}>
       <Col xs={20} md={10} lg={6} className="center">
         <Form
           name="normal_login"
@@ -24,29 +24,22 @@ const Login = () => {
             rules={[
               {
                 required: true,
-                message: "Please input your Username!",
+                message: 'Please input your Username!',
               },
             ]}
           >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Username"
-            />
+            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
           </Form.Item>
           <Form.Item
             name="password"
             rules={[
               {
                 required: true,
-                message: "Please input your Password!",
+                message: 'Please input your Password!',
               },
             ]}
           >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-            />
+            <Input prefix={<LockOutlined className="site-form-item-icon" />} type="password" placeholder="Password" />
           </Form.Item>
           {/* <Form.Item>
             <Form.Item name="remember" valuePropName="checked" noStyle>
@@ -62,11 +55,7 @@ const Login = () => {
           </a>
 
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
+            <Button type="primary" htmlType="submit" className="login-form-button">
               Log in
             </Button>
             {/* Or <a href="">register now!</a> */}

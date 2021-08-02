@@ -6,6 +6,7 @@ const PrivateRoute: React.FC<{
   path: string;
   exact: boolean;
 }> = (props) => {
+  
   if (localStorage.getItem("token")) {
     return (
       <Route

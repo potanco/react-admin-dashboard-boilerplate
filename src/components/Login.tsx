@@ -1,12 +1,26 @@
 import { Form, Input, Button, Row, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { useEffect, useState } from 'react';
+import { getToken, setToken } from '../utils/token';
+import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // const { Content }: any = Layout;
 
 const Login = () => {
+  const [submited, setSubmited] = useState(false);
+  const token = getToken();
+  const history = useHistory();
+
   const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+    setToken();
+    setSubmited(!submited);
   };
+  useEffect(() => {
+    if (token) {
+      history.push('/');
+    }
+  }, [submited]);
 
   return (
     <Row style={{ height: '100vh' }}>

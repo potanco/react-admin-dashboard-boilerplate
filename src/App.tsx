@@ -7,18 +7,17 @@ import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 
 function App() {
-  let token = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
   return (
     <>
       <BrowserRouter>
         {/* <CheckToken /> */}
         <Switch>
           <PrivateRoute component={Home} path="/" exact />
-
           <Route path="/login" exact>
             <Login />
           </Route>
-
+          {/* // redirect from all routes to login if token doesnt exist */}
           <PrivateRoute
             path="/logout"
             exact

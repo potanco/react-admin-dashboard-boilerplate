@@ -21,6 +21,9 @@ function App(): JSX.Element {
       <BrowserRouter>
         {/* <CheckToken /> */}
         <Switch>
+          <Route path="/login" exact>
+            <Login />
+          </Route>
           {/* {privateRoutes.map((el, i) => {
             return <PrivateRoute key={i} component={el.component} exact path={el.path} />;
           })} */}
@@ -29,12 +32,8 @@ function App(): JSX.Element {
           {/* {r} */}
           <PrivateRoute component={Template} path={'/'} />
 
-          <Route path="/login" exact>
-            <Login />
-          </Route>
           {/* redirect from all routes to login if token doesnt exist  */}
           {!token && <Redirect to="/login" />}
-         
         </Switch>
       </BrowserRouter>
     </>

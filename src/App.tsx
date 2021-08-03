@@ -5,31 +5,29 @@ import Login from './components/Login';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
+import CheckToken from './components/CheckToken';
+import Sidebar from './components/Sidebar';
+import { privateRoutes } from './PrivateRoutes';
 
 function App() {
   const token = localStorage.getItem('token');
   return (
-    <>
+    <div>
       <BrowserRouter>
         {/* <CheckToken /> */}
         <Switch>
-          <PrivateRoute component={Home} path="/" exact />
+          {privateRoutes.map((el, i) => {
+            return <PrivateRoute key={i} component={el.component} path={el.path} exact />;
+          })}
+
           <Route path="/login" exact>
             <Login />
           </Route>
           {/* // redirect from all routes to login if token doesnt exist */}
-          <PrivateRoute
-            path="/logout"
-            exact
-            component={() => {
-              // dispatch(logout(0));
-              return <Redirect to="/"></Redirect>;
-            }}
-          />
           {!token && <Redirect from="/*" to="/login" />}
         </Switch>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

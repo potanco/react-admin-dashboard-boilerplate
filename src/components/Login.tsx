@@ -1,10 +1,9 @@
 import { Form, Input, Button, Row, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
-import { getToken, setToken } from '../utils/localStorage';
+import { getToken, setToken, setUser } from '../utils/localStorage';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { setUser } from '../app/slices/Auth';
 
 // const { Content }: any = Layout;
 type TValues = {
@@ -17,9 +16,10 @@ const Login = () => {
 
   const onFinish = (values: TValues) => {
     console.log(values);
+    setUser(values.username);
 
     setToken();
-    setUser(values.username);
+
     setSubmited(!submited);
   };
   useEffect(() => {

@@ -1,9 +1,8 @@
 import { Layout, Statistic, Breadcrumb, Row, Col, Card } from 'antd';
-import Countdown from 'antd/lib/statistic/Countdown';
-import { useState } from 'react';
+
 import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 const Home = (): JSX.Element => {
   const { Countdown } = Statistic;
@@ -18,6 +17,7 @@ const Home = (): JSX.Element => {
       console.log('changed!');
     }
   }
+  
 
   return (
     <Layout style={{ minHeight: '100vh' }}>

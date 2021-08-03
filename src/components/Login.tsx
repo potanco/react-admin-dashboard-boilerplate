@@ -2,7 +2,6 @@ import { Form, Input, Button, Row, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { getToken, setToken, setUser } from '../utils/localStorage';
-import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 // const { Content }: any = Layout;

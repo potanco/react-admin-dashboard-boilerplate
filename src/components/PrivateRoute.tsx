@@ -1,27 +1,18 @@
-import { Row } from 'antd';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import Sidebar from './Sidebar';
-import User from './User';
+import Template from '../pages/Template';
 
 type props = {
   component: React.FC;
   path: string;
-  exact: boolean;
 };
 
 const PrivateRoute: React.FC<props> = (props) => {
   if (localStorage.getItem('token')) {
     return (
-      <>
-        <User />
-        <Row>
-          <Sidebar />
-          <Suspense fallback={<div>Loading...</div>}>
-            <Route path={props.path} exact={props.exact} component={props.component} />;
-          </Suspense>
-        </Row>
-      </>
+      <Route path={props.path}>
+        <Template />
+      </Route>
     );
   }
 

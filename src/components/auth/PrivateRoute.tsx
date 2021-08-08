@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import Template from '../pages/Template';
+import Template from '../../pages/Template';
 
 type props = {
   component: React.FC;

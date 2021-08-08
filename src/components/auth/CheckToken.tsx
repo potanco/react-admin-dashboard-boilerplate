@@ -2,7 +2,7 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { logout } from '../app/slices/Auth';
+import { logout } from '../../app/slices/Auth';
 
 const CheckToken: React.FC = () => {
   const { pathname } = useLocation();
@@ -11,6 +11,8 @@ const CheckToken: React.FC = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    console.log(1);
+    
 
     // if (localStorage.getItem('token')) {
     //   token = localStorage.getItem('token');

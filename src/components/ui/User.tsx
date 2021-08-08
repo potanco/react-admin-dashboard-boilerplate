@@ -1,16 +1,17 @@
-import { Button, Dropdown, Menu, Layout } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { Dropdown, Menu, Layout } from 'antd';
 import { useHistory } from 'react-router-dom';
-import { logout } from '../app/slices/Auth';
-import { getUser, logOut } from '../utils/localStorage';
+import { useAppDispatch } from '../../app/hooks';
+import { logout } from '../../app/slices/Auth';
+import { getUser } from '../../utils/localStorage';
 const { Header } = Layout;
 
 const User = (): JSX.Element => {
+  const dispatch = useAppDispatch();
   const history = useHistory();
   const user = getUser();
 
   const handleLogOut = () => {
-    logout(0);
+    dispatch(logout(0));
     history.push('/login');
   };
   const menu = (

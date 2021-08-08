@@ -1,13 +1,12 @@
 import { Form, Input, Button, Row, Col, Typography } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import svg from '../svgs/dashboard.svg';
-import { login } from '../app/slices/Auth';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { Link, useHistory } from 'react-router-dom';
+import svg from '../../svgs/dashboard.svg';
+import { login } from '../../app/slices/Auth';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 const { Title } = Typography;
 
-// const { Content }: any = Layout;
 type TValues = {
   name: string;
   password: string;
@@ -31,7 +30,7 @@ const Login = (): JSX.Element => {
 
   return (
     <Row style={{ height: '100vh', overflow: 'hidden' }} justify={'center'} align={'middle'}>
-      <Col md={8} xl={6}>
+      <Col md={9} xl={6}>
         {/*xs={20} md={10} lg={6}*/}
         <Row style={{ margin: '2rem 0rem' }}>
           <Title level={3}>Login</Title>
@@ -73,10 +72,9 @@ const Login = (): JSX.Element => {
           </Form.Item>
 
           <Row style={{ margin: '1rem 0rem' }}>
-            {' '}
-            <a className="login-form-forgot" href="">
+            <Link to="/forgot-password" className="login-form-forgot">
               Forgot password
-            </a>
+            </Link>
           </Row>
 
           <Form.Item>
@@ -93,7 +91,7 @@ const Login = (): JSX.Element => {
           </Form.Item>
         </Form>
       </Col>
-      <Col className={'card_col'} xs={0} lg={10} push={4}>
+      <Col className={'card_col'} xs={0} xl={10} push={4}>
         <Row className="login_div" align="middle">
           <Col md={20}>
             <img style={{ width: '100%' }} src={svg} />

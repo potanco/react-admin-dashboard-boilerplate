@@ -29,19 +29,19 @@ button {
   display: block;
   object-fit: 'cover';
 }
-.avatar_parent{ 
+.avatar_parent {
   position: relative;
-    display: inline-block;
-    overflow: hidden;
-    color: #fff;
-    white-space: nowrap;
-    text-align: center;
-    vertical-align: middle;
-    background: #ededed;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background: #ededed;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
 }
 .ant-input-affix-wrapper {
   border-radius: 0.7rem;
@@ -71,4 +71,7 @@ button {
   text-align: right;
   border-bottom: 1px solid rgba(0, 0, 0, 0.192);
   box-shadow: rgb(0 0 0 / 15%) 0px 1px 4px -1px;
+}
+.ant-input {
+  margin-left: 0.5rem;
 }

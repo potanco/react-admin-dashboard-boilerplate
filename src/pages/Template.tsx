@@ -1,18 +1,20 @@
 import React, { Suspense } from 'react';
-import Sidebar from '../components/Sidebar';
-import User from '../components/User';
+import Sidebar from '../components/ui/Sidebar';
+import User from '../components/ui/User';
 import { Row } from 'antd';
 import { Route, Switch } from 'react-router-dom';
 import { privateRoutes } from '../PrivateRoutes';
 import { Spin } from 'antd';
+import CheckToken from '../components/auth/CheckToken';
 
 const Template = (): JSX.Element => {
   return (
     <>
+      <CheckToken />
       <User />
       <Row>
         <Sidebar />
-        <Suspense fallback={<Spin style={{position: "absolute", top: "50%", left: "50%"}} />}>
+        <Suspense fallback={<Spin style={{ position: 'absolute', top: '50%', left: '50%' }} />}>
           <Switch>
             {privateRoutes.map((privateRoute, idx) => {
               return (

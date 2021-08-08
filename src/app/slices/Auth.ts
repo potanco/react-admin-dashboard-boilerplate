@@ -3,17 +3,23 @@ import { api } from '../api';
 import { RootState } from '../rootReducer';
 
 // A token gets returned which we will save in local storage
-export const login = createAsyncThunk('admin/login', async (details: { name: string; password: string }) => {
-  const response = await api.post('admin/login', {
-    name: details.name,
-    password: details.password,
-  });
+export const login = createAsyncThunk(
+  'admin/login',
+  async (details: { name: string; password: string }, { rejectWithValue }) => {
+    try {
+      const response = await api.post('admin/login', {
+        name: details.name,
+        password: details.password,
+      });
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', response.data.admin.name);
 
-  localStorage.setItem('token', response.data.token);
-  localStorage.setItem('user', response.data.admin.name);
-
-  return response.data;
-});
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
 
 export type User = {
   _id: string;
@@ -77,9 +83,8 @@ const slice = createSlice({
       state.status = 'fulfilled';
     });
     builder.addCase(login.rejected, (state, action: any) => {
-      console.log(action.error);
       state.status = 'error';
-      state.error.message = action.error.message;
+      state.error.message = action.payload.response.data.message;
       state.error.type = 'login';
     });
   },

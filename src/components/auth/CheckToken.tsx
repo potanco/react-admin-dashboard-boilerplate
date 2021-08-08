@@ -1,4 +1,4 @@
-import jwtDecode, { JwtPayload } from 'jwt-decode';
+// import jwtDecode, { JwtPayload } from 'jwt-decode';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -11,8 +11,7 @@ const CheckToken: React.FC = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    console.log(1);
-    
+    console.log(pathname);
 
     // if (localStorage.getItem('token')) {
     //   token = localStorage.getItem('token');

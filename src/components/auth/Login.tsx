@@ -1,4 +1,4 @@
-import { Form, Input, Button, Row, Col, Typography } from 'antd';
+import { Form, Input, Button, Row, Col, Typography, Spin } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
@@ -76,6 +76,19 @@ const Login = (): JSX.Element => {
               Forgot password
             </Link>
           </Row>
+
+          {Auth.status === 'pending' && (
+            <Row style={{ margin: '1rem' }} justify="center">
+              <Spin />
+            </Row>
+          )}
+          {Auth.status === 'error' && (
+            <Row style={{ margin: '1rem' }} justify="center">
+              <div className="alert alert-danger" role="alert">
+                {Auth.error.message}
+              </div>
+            </Row>
+          )}
 
           <Form.Item>
             <Button

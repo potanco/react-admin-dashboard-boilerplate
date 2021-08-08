@@ -14,7 +14,7 @@ const Template = (): JSX.Element => {
       <User />
       <Row>
         <Sidebar />
-        <Suspense fallback={<Spin style={{ position: 'absolute', top: '50%', left: '50%' }} />}>
+        <Suspense fallback={<Spin className="loader-svg" />}>
           <Switch>
             {privateRoutes.map((privateRoute, idx) => {
               return (

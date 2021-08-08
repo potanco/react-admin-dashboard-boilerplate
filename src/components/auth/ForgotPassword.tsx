@@ -1,5 +1,5 @@
 import { Form, Input, Button, Row, Col, Typography } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { MailOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -39,7 +39,7 @@ const ForgotPassword = (): JSX.Element => {
               },
             ]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
+            <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
           </Form.Item>
           <Form.Item>
             <Button

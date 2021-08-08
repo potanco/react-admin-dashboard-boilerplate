@@ -1,36 +1,45 @@
-import { Form, Input, Button, Row, Col } from 'antd';
+import { Form, Input, Button, Row, Col, Typography } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
-import { getToken, setToken, setUser } from '../utils/localStorage';
 import { useHistory } from 'react-router-dom';
+import svg from '../svgs/dashboard.svg';
+import { login } from '../app/slices/Auth';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+const { Title } = Typography;
 
 // const { Content }: any = Layout;
 type TValues = {
-  username: string;
+  name: string;
+  password: string;
 };
-const Login = () => {
+const Login = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const Auth = useAppSelector((state) => state.Auth);
+
   const [submited, setSubmited] = useState(false);
-  const token = getToken();
+
   const history = useHistory();
 
   const onFinish = (values: TValues) => {
-    console.log(values);
-    setUser(values.username);
-
-    setToken();
+    dispatch(login(values));
 
     setSubmited(!submited);
   };
   useEffect(() => {
-    if (token) {
-      history.push('/');
-    }
-  }, [submited]);
+    Auth.token && history.push('/');
+  }, [Auth.token]);
 
   return (
-    <Row style={{ height: '100vh' }}>
-      <Col xs={20} md={10} lg={6} className="center">
+    <Row style={{ height: '100vh', overflow: 'hidden' }} justify={'center'} align={'middle'}>
+      <Col md={8} xl={6}>
+        {/*xs={20} md={10} lg={6}*/}
+        <Row style={{ margin: '2rem 0rem' }}>
+          <Title level={3}>Login</Title>
+        </Row>
+
         <Form
+          layout={'vertical'}
+          size={'large'}
           name="normal_login"
           className="login-form"
           initialValues={{
@@ -39,7 +48,8 @@ const Login = () => {
           onFinish={onFinish}
         >
           <Form.Item
-            name="username"
+            label="name"
+            name="name"
             rules={[
               {
                 required: true,
@@ -50,6 +60,7 @@ const Login = () => {
             <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
           </Form.Item>
           <Form.Item
+            label="password"
             name="password"
             rules={[
               {
@@ -60,26 +71,44 @@ const Login = () => {
           >
             <Input prefix={<LockOutlined className="site-form-item-icon" />} type="password" placeholder="Password" />
           </Form.Item>
-          {/* <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
 
+          <Row style={{ margin: '1rem 0rem' }}>
+            {' '}
             <a className="login-form-forgot" href="">
               Forgot password
             </a>
-          </Form.Item> */}
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
+          </Row>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
+            <Button
+              block
+              style={{ borderRadius: '.7rem' }}
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
+              Login
             </Button>
             {/* Or <a href="">register now!</a> */}
           </Form.Item>
         </Form>
+      </Col>
+      <Col className={'card_col'} xs={0} lg={10} push={4}>
+        <Row className="login_div" align="middle">
+          <Col md={20}>
+            <img style={{ width: '100%' }} src={svg} />
+          </Col>
+          <Col md={24} className="welcome_div">
+            <Title level={3}> Welcome to emilus</Title>
+            <div style={{ marginRight: '5rem' }}>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat, vel convallis
+                elit fermentum pellentesque.
+              </p>
+              <div style={{ textAlign: 'end' }}></div>
+            </div>
+          </Col>
+        </Row>
       </Col>
     </Row>
   );

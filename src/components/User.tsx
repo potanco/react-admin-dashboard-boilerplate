@@ -1,21 +1,20 @@
 import { Button, Dropdown, Menu, Layout } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { logout } from '../app/slices/Auth';
 import { getUser, logOut } from '../utils/localStorage';
 const { Header } = Layout;
 
 const User = (): JSX.Element => {
-  const [loggedOut, setLoggedOut] = useState(false);
-
   const history = useHistory();
   const user = getUser();
 
   const handleLogOut = () => {
-    logOut(['token', 'user']);
-    setLoggedOut(!loggedOut);
+    logout(0);
+    history.push('/login');
   };
   const menu = (
-    <Menu>
+    <Menu theme="light">
       <Menu.Item>{user}</Menu.Item>
       <Menu.Item>
         <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
@@ -26,15 +25,13 @@ const User = (): JSX.Element => {
     </Menu>
   );
 
-  useEffect(() => {
-    history.push('/');
-  }, [loggedOut]);
-
   return (
-    <Header style={{ textAlign: 'right' }}>
-      <span style={{ color: 'white', marginRight: '1rem' }}>Welcome, {user} !</span>
-      <Dropdown overlay={menu} placement="bottomLeft" arrow>
-        <img className="user-img" src={'https://picsum.photos/id/237/200/300'} />
+    <Header className="user_header">
+      <span style={{ color: 'black', marginRight: '1rem' }}>Welcome, {user} !</span>
+      <Dropdown trigger={['click']} overlay={menu} placement="bottomLeft">
+        <span className="avatar_parent">
+          <img className="user-img" src={'https://picsum.photos/id/237/200/300'} style={{ cursor: 'pointer' }} />
+        </span>
       </Dropdown>
     </Header>
   );

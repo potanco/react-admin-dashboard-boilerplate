@@ -4,12 +4,10 @@ import './App.css';
 import Login from './components/Login';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
-import CheckToken from './components/CheckToken';
-import { privateRoutes } from './PrivateRoutes';
+// import CheckToken from './components/CheckToken';
 import { getToken } from './utils/localStorage';
-import Home from './pages/Home';
-import Users from './pages/Users';
 import Template from './pages/Template';
+import CheckToken from './components/CheckToken';
 
 function App(): JSX.Element {
   const token = getToken();
@@ -19,7 +17,7 @@ function App(): JSX.Element {
   return (
     <>
       <BrowserRouter>
-        {/* <CheckToken /> */}
+        <CheckToken />
         <Switch>
           <Route path="/login" exact>
             <Login />

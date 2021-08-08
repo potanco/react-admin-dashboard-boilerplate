@@ -2,8 +2,9 @@ import React, { Suspense } from 'react';
 import Sidebar from '../components/Sidebar';
 import User from '../components/User';
 import { Row } from 'antd';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { privateRoutes } from '../PrivateRoutes';
+import { Spin } from 'antd';
 
 const Template = (): JSX.Element => {
   return (
@@ -11,7 +12,7 @@ const Template = (): JSX.Element => {
       <User />
       <Row>
         <Sidebar />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Spin style={{position: "absolute", top: "50%", left: "50%"}} />}>
           <Switch>
             {privateRoutes.map((privateRoute, idx) => {
               return (

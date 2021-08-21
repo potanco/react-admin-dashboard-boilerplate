@@ -9,7 +9,14 @@ const { Sider } = Layout;
 const Sidebar = (): JSX.Element => {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <Sider collapsible collapsed={collapsed} onCollapse={() => setCollapsed(!collapsed)} theme="light">
+    <Sider
+      collapsible
+      breakpoint="lg"
+      collapsedWidth="0"
+      collapsed={collapsed}
+      onCollapse={() => setCollapsed(!collapsed)}
+      theme="light"
+    >
       <div className="logo" />
       <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
         <Menu.Item key="1" icon={<PieChartOutlined />}>

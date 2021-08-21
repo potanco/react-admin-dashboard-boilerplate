@@ -27,7 +27,7 @@ const User = (): JSX.Element => {
   );
 
   return (
-    <Header className="user_header">
+    <Header className="user_header" style={{ height: '100%' }}>
       <span style={{ color: 'black', marginRight: '1rem' }}>Welcome, {user} !</span>
       <Dropdown trigger={['click']} overlay={menu} placement="bottomLeft">
         <span className="avatar_parent">

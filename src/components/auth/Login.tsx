@@ -56,7 +56,11 @@ const Login = (): JSX.Element => {
               },
             ]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+            <Input
+              autoComplete={'off'}
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="Username"
+            />
           </Form.Item>
           <Form.Item
             label="password"

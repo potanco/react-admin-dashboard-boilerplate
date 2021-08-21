@@ -11,9 +11,12 @@ const Template = (): JSX.Element => {
   return (
     <>
       <CheckToken />
-      <User />
+      <Row justify="center">
+        <User />
+      </Row>
       <Row>
         <Sidebar />
+
         <Suspense fallback={<Spin className="loader-svg" />}>
           <Switch>
             {privateRoutes.map((privateRoute, idx) => {

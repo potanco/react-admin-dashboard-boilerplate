@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.8",
+    "@types/tailwindcss": "^2.2.1",
     "autoprefixer": "^9",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",

@@ -18,7 +18,7 @@ export const login = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error);
     }
-  
+  },
 );
 
 export type User = {

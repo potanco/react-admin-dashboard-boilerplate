@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
-import { DesktopOutlined, PieChartOutlined, FileOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
+import { DesktopOutlined, PieChartOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
-const { SubMenu } = Menu;
 
 const { Sider } = Layout;
 
-const Sidebar = (): JSX.Element => {
+type TProps = {
+  isMobile?: boolean;
+};
+
+const Sidebar = (props: TProps): JSX.Element => {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
       collapsible
-      breakpoint="lg"
-      collapsedWidth="0"
+      breakpoint={!props.isMobile ? 'md' : 'lg'}
+      collapsedWidth={props.isMobile ? 0 : undefined}
       collapsed={collapsed}
       onCollapse={() => setCollapsed(!collapsed)}
       theme="light"
+      className={`${props.isMobile ? ' lg:hidden fixed top-0 left-0 ' : 'hidden lg:block'}`}
     >
       <div className="logo" />
       <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">

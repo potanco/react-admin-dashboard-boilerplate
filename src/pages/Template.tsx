@@ -11,9 +11,9 @@ const Template = (): JSX.Element => {
   return (
     <>
       <CheckToken />
-      <Row justify="center">
-        <User />
-      </Row>
+
+      <User />
+
       <Row>
         <Sidebar />
 

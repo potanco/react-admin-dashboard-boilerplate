@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { logout } from '../../app/slices/Auth';
 import { getUser } from '../../utils/localStorage';
+import Sidebar from './Sidebar';
 const { Header } = Layout;
 
 const User = (): JSX.Element => {
@@ -28,6 +29,8 @@ const User = (): JSX.Element => {
 
   return (
     <Header className="user_header" style={{ height: '100%' }}>
+      <Sidebar isMobile={true} />
+
       <span style={{ color: 'black', marginRight: '1rem' }}>Welcome, {user} !</span>
       <Dropdown trigger={['click']} overlay={menu} placement="bottomLeft">
         <span className="avatar_parent">

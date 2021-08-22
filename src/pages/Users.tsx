@@ -89,9 +89,7 @@ const Users = (): JSX.Element => {
             <Breadcrumb.Item>Users</Breadcrumb.Item>
             <Breadcrumb.Item></Breadcrumb.Item>
           </Breadcrumb>
-          <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            <Table columns={columns} dataSource={data} />
-          </div>
+          <Table columns={columns} dataSource={data} />
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>

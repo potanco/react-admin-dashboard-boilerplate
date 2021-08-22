@@ -24,7 +24,7 @@ const Template = (): JSX.Element => {
                 privateRoute.component && (
                   <Route
                     key={idx}
-                    path={privateRoute.path}
+                    path={privateRoute.pth}
                     exact
                     render={(props: any) => <privateRoute.component {...props} />}
                   />
